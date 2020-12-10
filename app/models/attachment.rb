@@ -1,3 +1,3 @@
 class Attachment < ApplicationRecord
-  belong_to: article
+  belongs_to :article
 end

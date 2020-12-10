@@ -1,14 +1,14 @@
 class AuthorsController < ApplicationController
-  before_action :zero_authors_or_authenticated, only: [:new, :create]
+  before_action :zero_authors_or_authenticated, only: %i[new create]
 
-def zero_authors_or_authenticated
-  unless Author.count == 0 || current_user
-    redirect_to root_path
-    return false
+  def zero_authors_or_authenticated
+    unless Author.count.zero? || current_user
+      redirect_to root_path
+      false
+    end
   end
-end
 
-  before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :set_author, only: %i[show edit update destroy]
 
   # GET /authors
   # GET /authors.json
@@ -18,8 +18,7 @@ end
 
   # GET /authors/1
   # GET /authors/1.json
-  def show
-  end
+  def show; end
 
   # GET /authors/new
   def new
@@ -27,8 +26,7 @@ end
   end
 
   # GET /authors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /authors
   # POST /authors.json
@@ -70,15 +68,15 @@ end
     end
   end
 
-  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_author
-      @author = Author.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def author_params
-      params.require(:author).permit(:username, :email, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def author_params
+    params.require(:author).permit(:username, :email, :password, :password_confirmation)
+  end
 end
