@@ -36,7 +36,7 @@ The features of this project are listed as below:
 
 ## Live Demo
 
-To quickly see our project in action, visit the [live demo]() on heroku.
+To quickly see our project in action, visit the [live demo](https://hidden-beyond-07200.herokuapp.com/) on heroku.
 
 ## Built With
 
